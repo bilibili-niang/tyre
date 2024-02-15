@@ -7,6 +7,14 @@ export default defineConfig({
   plugins: [
     uni(),
   ],
+  resolve: {
+    alias: {
+      // 设置路径 这里resolve和join可自行选用
+      // 设置别名
+      "@": path.resolve(__dirname, "./src")
+    },
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
+  },
   css: {
     preprocessorOptions: {
       less: {
