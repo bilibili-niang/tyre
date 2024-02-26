@@ -45,7 +45,6 @@
     // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
   },
   "tabBar": {
-    "backgroundColor": "#dcdadd",
     "color": "#333333",
     "selectedColor": "#441a1e",
     "borderStyle": "black",

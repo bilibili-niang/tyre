@@ -4,31 +4,43 @@ import verifys from "@/utils/vertify";
 
 const account = ref("");
 const password = ref("");
+const disabled = ref(false);
 const loginSubmit = () => {
+  disabled.value = true;
   if (verifys.verify({
     acc: account.value,
     pwd: password.value
   })) {
+
     uni.showToast({
       title: "提交数据",
-      icon: "success",
+      icon: "loading",
       duration: 1300
     });
+
+
   } else {
     // 弹窗,无法登录
     uni.showToast({
       title: "登录失败",
-      icon: "none",
+      icon: "error",
       duration: 1300
     });
+    setTimeout(() => {
+      disabled.value = !disabled.value;
+    }, 1200);
   }
 };
+const src = ref("/static/icons/logo.png");
 </script>
 
 <template>
   <div class="loginPage pageContainer">
     <div class="formContainer">
-      <up-alert title="请登录" closable type="error" description="请登录使用"></up-alert>
+      <up-alert title="请登录" type="error" description="请先登录使用"></up-alert>
+      <div class="imageLim">
+        <up-image shape="circle" :show-loading="true" :src="src" width="80px" height="80px"></up-image>
+      </div>
       <div class="inputLim">
         <up-input
             placeholder="用户名"
@@ -44,14 +56,16 @@ const loginSubmit = () => {
             border="bottom"
         ></up-input>
       </div>
-
       <div class="btnLim">
         <div class="block-25"></div>
-        <up-button type="primary" plain text="登录" @click="loginSubmit"></up-button>
+        <up-button :disabled="disabled" type="primary" plain text="登录" @click="loginSubmit"></up-button>
         <div class="block-25"></div>
       </div>
     </div>
 
+    <div class="footer">
+      <u-tag text="小张轮胎服务" plain></u-tag>
+    </div>
   </div>
 </template>
 
@@ -72,5 +86,19 @@ const loginSubmit = () => {
     padding: @padding-s;
     border-radius: 5px;
   }
+}
+.imageLim{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: @margin-s;
+}
+.footer{
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

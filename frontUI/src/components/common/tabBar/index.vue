@@ -15,7 +15,9 @@ const changeTab = (name) => {
   // 跳转
   uni.navigateTo({
     // url: "/pages/" + value6.value + "/index.vue",
-    url: "pages/contact/index.vue",
+    // url: "pages/contact/"+name+".vue",
+    url: "pages/" + name + "/index.vue",
+
   });
 };
 </script>

@@ -1,9 +1,9 @@
 <script>
 export default {
   onLaunch: function () {
-    uni.hideTabBar();
   },
   onShow: function () {
+    // uni.hideTabBar();
   },
   onHide: function () {
   },
