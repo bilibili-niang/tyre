@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && nodemon main.ts",
+    "dev": "nodemon --watch * -e ts,tsx --exec ts-node main.ts",
+    "prd": "pm2 start bin/www"
   },
   "dependencies": {
     "debug": "^4.1.1",
@@ -22,6 +21,10 @@
     "koa-views": "^6.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "@types/koa": "^2.15.0",
+    "@types/node": "^20.11.23",
+    "nodemon": "^1.19.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }
